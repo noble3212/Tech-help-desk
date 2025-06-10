@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Help Desk</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+    .question {
+      cursor: pointer;
+      padding: 0.5rem;
+      background: #e0e0e0;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+    .answer {
+      display: none;
+      background: #f1f1f1;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .search-bar {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tech Help Desk</h1>
+    <p>Find answers to common hardware, Windows, and Linux issues</p>
+  </header>
+
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search a problem (e.g., 'blue screen', 'no boot', 'wifi issue')">
+    </div>
+
+    <div class="section">
+      <h2>🔧 Hardware Issues</h2>
+      <div class="question">PC won’t turn on</div>
+      <div class="answer">Check power cable, PSU switch, try different outlet. If fans spin but no display, check RAM/GPU seating.</div>
+
+      <div class="question">Overheating CPU</div>
+      <div class="answer">Ensure thermal paste is applied correctly, check fan orientation, and clean dust from heatsink.</div>
+    </div>
+
+    <div class="section">
+      <h2>🪟 Windows Errors</h2>
+      <div class="question">Blue Screen of Death (BSOD)</div>
+      <div class="answer">Note the stop code. Common ones like MEMORY_MANAGEMENT or IRQL_NOT_LESS_OR_EQUAL often point to RAM or driver issues.</div>
+
+      <div class="question">Windows update stuck</div>
+      <div class="answer">Reboot into Safe Mode, run Windows Update troubleshooter, or reset Windows Update components via command line.</div>
+    </div>
+
+    <div class="section">
+      <h2>🐧 Linux Troubles</h2>
+      <div class="question">No WiFi after install</div>
+      <div class="answer">Use `lspci` or `lsusb` to identify the WiFi chip. Install missing drivers via terminal or proprietary firmware via Software & Updates.</div>
+
+      <div class="question">"Permission denied" errors</div>
+      <div class="answer">Use `sudo` for administrative tasks. Check file permissions with `ls -l` and change them with `chmod` or `chown` if needed.</div>
+    </div>
+
+    <div class="section">
+      <h2>💡 General Help</h2>
+      <div class="question">What is BIOS/UEFI?</div>
+      <div class="answer">BIOS/UEFI is firmware that initializes hardware before booting the OS. You can access it by pressing a key like DEL or F2 on startup.</div>
+
+      <div class="question">How to clean a PC safely?</div>
+      <div class="answer">Turn off and unplug the PC. Use compressed air for fans, heatsinks, and power supply. Avoid using a vacuum cleaner directly.</div>
+    </div>
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
