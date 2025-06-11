@@ -1,2 +1,2 @@
 Website
-https://github.com/noble3212/Tech-help-desk/deployments/github-pages
+https://noble3212.github.io/Tech-help-desk/
