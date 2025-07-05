@@ -78,7 +78,7 @@
     1. Check the power cable and PSU switch. Try a different outlet or power strip.<br>
     2. Confirm the motherboard standby LEDs (if available) are lit.<br>
     3. If fans spin but no display: reseat RAM, GPU, and ensure CPU power cable (8-pin) is connected.<br>
-    4. Try booting with only CPU, 1 stick of RAM, and no GPU to isolate the issue.<br>
+    4. Try booting with only CPU, 1 stick of RAM, and no GPU if you have an IGPU. to isolate the issue it's likely not your GPU unless its a driver issue.<br>
     5. Reset the CMOS using the jumper or by removing the battery for 30 seconds.<br>
     6. If BIOS posts but Windows won't boot, use a USB installer to repair boot:<br>
     Run: <code>sfc /scannow</code> and <code>dism /online /cleanup-image /restorehealth</code>.<br>
@@ -124,7 +124,7 @@
     1. Note the stop code (e.g., MEMORY_MANAGEMENT, IRQL_NOT_LESS_OR_EQUAL).<br>
     2. Run <code>chkdsk /f</code>, <code>sfc /scannow</code>, and Memory Diagnostic Tool.<br>
     3. Use <code>dism /online /cleanup-image /restorehealth</code>.<br>
-    4. Update or roll back drivers (especially GPU, chipset, storage).<br>
+    4. Update or roll back drivers (optional better to use DDU- But some drives are instable on games anyways. Make sure you check forums for common complaints. (especially GPU, chipset, storage (likely not an issue with storage drivers but it can happen with windows secuity).<br>
     5. Kernel anti-cheat (used by games) can cause BSODs—test by uninstalling.<br>
     📺 <a href="https://www.youtube.com/watch?v=97VjK1Gz5qQ" target="_blank">YouTube: How to fix BSOD errors</a>
   </div>
@@ -139,7 +139,7 @@
     <code>net stop msiserver</code><br>
     Delete contents of <code>C:\Windows\SoftwareDistribution</code>, then:<br>
     <code>net start wuauserv</code> ...etc.<br>
-    3. Microsoft usually retries failed updates within days.<br>
+    3. Microsoft usually retries failed updates within days so there is nothing wrong with waiting.<br>
     📺 <a href="https://www.youtube.com/watch?v=GkVfE7D_Nak" target="_blank">YouTube: Fix Windows Update stuck</a>
   </div>
 
@@ -155,7 +155,7 @@
 
 <!-- Linux Troubles -->
 <div class="section">
-  <h2>🐧 Linux Troubles</h2>
+  <h2>🐧 Linux Troubles(Debain mostly)</h2>
 
   <div class="question">No WiFi after install</div>
   <div class="answer">
