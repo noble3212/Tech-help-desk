@@ -69,56 +69,185 @@
       <input type="text" placeholder="Search a problem (e.g., 'blue screen', 'no boot', 'wifi issue')">
     </div>
 
-    <!-- Hardware Section -->
-    <div class="section">
-      <h2>🔧 Hardware Issues</h2>
-      <div class="question">PC won’t turn on</div>
-      <div class="answer">Check power cable, PSU switch, try different outlet. If fans spin but no display, check RAM/GPU/CPU (last) seating. Or reset the CMOS. If it still won't turn on it's likely a problem with the Windows boot process. You will need a USB or use Safe Mode to run commands like <code>sfc /scannow</code> and <code>dism /online /restorehealth</code>.</div>
+   <!-- Hardware Section -->
+<div class="section">
+  <h2>🔧 Hardware Issues</h2>
 
-      <div class="question">Overheating CPU</div>
-      <div class="answer">Ensure thermal paste is applied correctly, check fan orientation, and clean dust from heatsink. Remove old thermal paste. Reapply every 1–4 years depending on humidity.</div>
-    </div>
+  <div class="question">PC won’t turn on</div>
+  <div class="answer">
+    1. Check the power cable and PSU switch. Try a different outlet or power strip.<br>
+    2. Confirm the motherboard standby LEDs (if available) are lit.<br>
+    3. If fans spin but no display: reseat RAM, GPU, and ensure CPU power cable (8-pin) is connected.<br>
+    4. Try booting with only CPU, 1 stick of RAM, and no GPU to isolate the issue.<br>
+    5. Reset the CMOS using the jumper or by removing the battery for 30 seconds.<br>
+    6. If BIOS posts but Windows won't boot, use a USB installer to repair boot:<br>
+    Run: <code>sfc /scannow</code> and <code>dism /online /cleanup-image /restorehealth</code>.<br>
+    📺 <a href="https://www.youtube.com/watch?v=FcPpx2pT1fY" target="_blank">YouTube: PC not turning on troubleshooting guide</a>
+  </div>
 
-    <!-- Windows Errors -->
-    <div class="section">
-      <h2>🪟 Windows Errors</h2>
-      <div class="question">Blue Screen of Death (BSOD)</div>
-      <div class="answer">Note the stop code. Common ones like MEMORY_MANAGEMENT or IRQL_NOT_LESS_OR_EQUAL often point to RAM or driver issues, kernel-level anti-cheat software, or faulty RAM. Run <code>chkdsk /f</code> and <code>sfc /scannow</code> in Command Prompt. Also run a Memory Diagnostic.</div>
+  <div class="question">Overheating CPU</div>
+  <div class="answer">
+    1. Check thermal paste coverage. Clean off old paste with isopropyl alcohol and reapply.<br>
+    2. Ensure heatsink is properly seated and tightened.<br>
+    3. Case airflow: add intake/exhaust fans, check fan direction.<br>
+    4. Use HWMonitor or CoreTemp to check temps under load.<br>
+    5. Replace thermal paste every 1–4 years depending on use and environment.<br>
+    📺 <a href="https://www.youtube.com/watch?v=MRV7VS3uNnI" target="_blank">YouTube: How to fix CPU overheating</a>
+  </div>
 
-      <div class="question">Windows update stuck</div>
-      <div class="answer">Try the Windows Update Troubleshooter (Settings > Update & Security > Troubleshoot). If it fails, reset Windows Update via Command Prompt:<br><code>net stop wuauserv</code><br><code>net stop cryptSvc</code><br><code>net stop bits</code><br><code>net stop msiserver</code><br>Then restart them in reverse order. Eventually Microsoft usually re-attempts the update automatically.</div>
+  <div class="question">No display but PC powers on</div>
+  <div class="answer">
+    1. Reseat the GPU or try integrated graphics.<br>
+    2. Try another monitor or cable (HDMI/DP).<br>
+    3. Reset BIOS (CMOS).<br>
+    4. Listen for beep codes if motherboard has speaker.<br>
+    5. Try 1 stick of RAM or swapping RAM slots.<br>
+    📺 <a href="https://www.youtube.com/watch?v=5FWXgQSokF4" target="_blank">YouTube: No display PC troubleshooting</a>
+  </div>
 
-      <div class="question">Windows permission denied</div>
-      <div class="answer">Make sure you're running the program as an administrator. Right-click > Run as Administrator. If issues persist, check your account permissions or local security policy. If third-party antivirus is blocking access, disable it or use the official removal tool.</div>
-  <div class="question">Blue Screen of Death (BSOD)</div>
-  <div class="answer">Note the stop code. Common ones like MEMORY_MANAGEMENT or IRQL_NOT_LESS_OR_EQUAL often point to RAM or driver issues. Or even a bad policy/ Kernal level anti-cheat. and ram faults. Run <code>chkdsk /f</code> and <code>sfc /scannow</code> in Command Prompt. And run a Memory diagnositic.</div>
-  <div class="question">Windows update stuck</div>
-  <div class="answer">Try running the Windows Update Troubleshooter from Settings &gt; Update &amp; Security &gt; Troubleshoot. If that fails, reset Windows Update components via Command Prompt with commands like <code>net stop wuauserv</code>, <code>net stop cryptSvc</code>, <code>net stop bits</code>, and <code>net stop msiserver</code> followed by <code>net start wuauserv</code>, etc.</div>
-  <div class="answer">Reboot into Safe Mode, run Windows Update troubleshooter, or reset Windows Update components via command line.... More often than not you will eventually get an update. Microsoft reattemps the update every so often.</div>
-  <div class="question">Windows permission denied</div>
-  <div class="answer">Make sure you are running as an administrator. Right-click the program and select "Run as administrator." If you still get permission errors, check your user account permissions in Control Panel &gt; User Accounts. For file/folder issues, right-click the item, go to Properties &gt; Security, and ensure your user has Full Control. If a third-party anti-malware or security tool is blocking access, use its official uninstaller or temporarily disable it.</div>
+  <div class="question">Boot device not found</div>
+  <div class="answer">
+    1. Check BIOS boot order.<br>
+    2. Confirm drive is detected in BIOS.<br>
+    3. Try a different SATA port/cable or M.2 slot.<br>
+    4. Reinstall OS if drive is corrupted.<br>
+    📺 <a href="https://www.youtube.com/watch?v=0Oix3cZCfQ8" target="_blank">YouTube: Fix "No boot device found" error</a>
+  </div>
 </div>
 
-    <!-- Linux Troubles -->
-   <div class="section">
+<!-- Windows Errors -->
+<div class="section">
+  <h2>🪟 Windows Errors</h2>
+
+  <div class="question">Blue Screen of Death (BSOD)</div>
+  <div class="answer">
+    1. Note the stop code (e.g., MEMORY_MANAGEMENT, IRQL_NOT_LESS_OR_EQUAL).<br>
+    2. Run <code>chkdsk /f</code>, <code>sfc /scannow</code>, and Memory Diagnostic Tool.<br>
+    3. Use <code>dism /online /cleanup-image /restorehealth</code>.<br>
+    4. Update or roll back drivers (especially GPU, chipset, storage).<br>
+    5. Kernel anti-cheat (used by games) can cause BSODs—test by uninstalling.<br>
+    📺 <a href="https://www.youtube.com/watch?v=97VjK1Gz5qQ" target="_blank">YouTube: How to fix BSOD errors</a>
+  </div>
+
+  <div class="question">Windows update stuck</div>
+  <div class="answer">
+    1. Open Settings > Update & Security > Troubleshoot > Windows Update.<br>
+    2. Or manually reset update services via CMD:<br>
+    <code>net stop wuauserv</code><br>
+    <code>net stop cryptSvc</code><br>
+    <code>net stop bits</code><br>
+    <code>net stop msiserver</code><br>
+    Delete contents of <code>C:\Windows\SoftwareDistribution</code>, then:<br>
+    <code>net start wuauserv</code> ...etc.<br>
+    3. Microsoft usually retries failed updates within days.<br>
+    📺 <a href="https://www.youtube.com/watch?v=GkVfE7D_Nak" target="_blank">YouTube: Fix Windows Update stuck</a>
+  </div>
+
+  <div class="question">Windows permission denied</div>
+  <div class="answer">
+    1. Right-click > Run as Administrator.<br>
+    2. Check folder permissions under Properties > Security tab.<br>
+    3. Use <code>icacls</code> in CMD to modify permissions if needed.<br>
+    4. Disable 3rd-party antivirus and test again.<br>
+    📺 <a href="https://www.youtube.com/watch?v=nXt3DSEB9nY" target="_blank">YouTube: Fix file/folder access denied</a>
+  </div>
+</div>
+
+<!-- Linux Troubles -->
+<div class="section">
   <h2>🐧 Linux Troubles</h2>
+
   <div class="question">No WiFi after install</div>
-  <div class="answer">Use <code>lspci</code> or <code>lsusb</code> to identify the WiFi chip. Install missing drivers via terminal or proprietary firmware via Software &amp; Updates.</div>
+  <div class="answer">
+    1. Identify your WiFi chipset: run <code>lspci</code> or <code>lsusb</code>.<br>
+    2. Use <code>rfkill list</code> to check if the WiFi is blocked.<br>
+    3. Enable proprietary drivers (e.g., Broadcom) via <code>sudo ubuntu-drivers devices</code> or GUI (Software & Updates > Additional Drivers).<br>
+    4. If drivers aren't working, try: <code>sudo apt install bcmwl-kernel-source</code> (Broadcom), or relevant package.<br>
+    📺 <a href="https://www.youtube.com/watch?v=yr1ui6jZn5k" target="_blank">YouTube: Fix WiFi not working in Linux</a>
+  </div>
 
   <div class="question">"Permission denied" errors</div>
-  <div class="answer">Use <code>sudo</code> for administrative tasks. Check file permissions with <code>ls -l</code> and change them with <code>chmod</code> or <code>chown</code> if needed.</div>
+  <div class="answer">
+    1. Use <code>sudo</code> before commands needing root access.<br>
+    2. Check file permissions with <code>ls -l</code>. For example:<br>
+    <code>-rw-r--r-- 1 user user 1234 file.txt</code><br>
+    3. Modify permissions: <code>chmod +x script.sh</code> to make executable.<br>
+    4. Change ownership: <code>sudo chown youruser:youruser file.txt</code><br>
+    5. For folders, use <code>-R</code> to apply changes recursively.<br>
+    📺 <a href="https://www.youtube.com/watch?v=fRV_MvZx3_U" target="_blank">YouTube: Fix chmod permission denied</a>
+  </div>
+
+  <div class="question">Black screen after boot</div>
+  <div class="answer">
+    1. Press <code>Ctrl + Alt + F2</code> to enter a terminal (TTY2).<br>
+    2. Try restarting your display manager:<br>
+    <code>sudo systemctl restart gdm</code> (GNOME)<br>
+    <code>sudo systemctl restart sddm</code> (KDE)<br>
+    <code>sudo systemctl restart lightdm</code> (XFCE, others)<br>
+    3. If using NVIDIA, reinstall or switch to the open-source driver:<br>
+    <code>sudo apt install nvidia-driver-XXX</code> or <code>nouveau</code>.<br>
+    📺 <a href="https://www.youtube.com/watch?v=nEwM3ZFRhWc" target="_blank">YouTube: Fix Linux black screen boot</a>
+  </div>
+
+  <div class="question">Can't mount external drive</div>
+  <div class="answer">
+    1. Run <code>lsblk</code> or <code>sudo fdisk -l</code> to locate the drive.<br>
+    2. Mount manually:<br>
+    <code>sudo mount /dev/sdX1 /mnt</code><br>
+    3. If NTFS/FAT32 fails, install:<br>
+    <code>sudo apt install ntfs-3g</code><br>
+    4. For permissions issues:<br>
+    <code>sudo chown youruser:youruser /mnt</code><br>
+    📺 <a href="https://www.youtube.com/watch?v=kRk1J1u6kXU" target="_blank">YouTube: Mount external drives in Linux</a>
+  </div>
+
+  <div class="question">Package manager errors (APT)</div>
+  <div class="answer">
+    1. Broken packages:<br>
+    <code>sudo apt --fix-broken install</code><br>
+    2. Lock file stuck:<br>
+    <code>sudo rm /var/lib/dpkg/lock*</code> and then:<br>
+    <code>sudo dpkg --configure -a</code><br>
+    3. Clean caches:<br>
+    <code>sudo apt clean</code> and <code>sudo apt autoremove</code><br>
+    4. Update package list:<br>
+    <code>sudo apt update && sudo apt upgrade</code><br>
+    📺 <a href="https://www.youtube.com/watch?v=poJabG5yEts" target="_blank">YouTube: Fix apt-get errors</a>
+  </div>
+
+  <div class="question">Audio not working</div>
+  <div class="answer">
+    1. Run <code>pavucontrol</code> (install if missing) to check audio routing.<br>
+    2. Restart audio service:<br>
+    <code>systemctl --user restart pulseaudio</code> or <code>pipewire</code><br>
+    3. If HDMI audio is missing, use <code>alsamixer</code> to check channels.<br>
+    4. Ensure your user is in the <code>audio</code> group:<br>
+    <code>sudo usermod -aG audio $USER</code><br>
+    📺 <a href="https://www.youtube.com/watch?v=pwD2UcDAsvM" target="_blank">YouTube: Fix sound issues in Linux</a>
+  </div>
 </div>
 
-    <!-- General Help -->
-    <div class="section">
-      <h2>💡 General Help</h2>
-      <div class="question">What is BIOS/UEFI?</div>
-      <div class="answer">BIOS/UEFI is low-level firmware that initializes hardware before booting the OS. Access it by pressing DEL, F2, or ESC during startup depending on your motherboard brand.</div>
+<!-- General Help -->
+<div class="section">
+  <h2>💡 General Help</h2>
 
-      <div class="question">How to clean a PC safely?</div>
-      <div class="answer">Turn off and unplug your PC. Use compressed air for fans and heatsinks. Avoid vacuum cleaners. A soft brush (like a toothbrush) and patience also help remove stubborn dust.</div>
-    </div>
+  <div class="question">What is BIOS/UEFI?</div>
+  <div class="answer">
+    BIOS/UEFI is firmware that initializes hardware and hands off to the OS. Access via DEL, F2, or ESC during startup.<br>
+    UEFI is newer and supports mouse input, GPT drives, and Secure Boot.<br>
+    📺 <a href="https://www.youtube.com/watch?v=Q3E0acHzsF4" target="_blank">YouTube: BIOS vs UEFI explained</a>
   </div>
+
+  <div class="question">How to clean a PC safely?</div>
+  <div class="answer">
+    1. Turn off and unplug your PC. Press power button to discharge power.<br>
+    2. Use compressed air on fans, heatsinks, PSU grill, and case vents.<br>
+    3. Clean filters and fan blades with a soft brush.<br>
+    4. Avoid static: use an anti-static wrist strap or touch metal frequently.<br>
+    📺 <a href="https://www.youtube.com/watch?v=RS7X1c2gDLM" target="_blank">YouTube: How to clean your PC</a>
+  </div>
+</div>
+
 
   <script>
     const questions = document.querySelectorAll('.question');
